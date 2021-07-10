@@ -11,7 +11,7 @@ const user = process.env.DB_User;
 const pass = process.env.DB_PASS;
 const dbName = process.env.DB_NAME;
 
-const port =process.env.DB_HOST ||5000;
+const port =4000;
 const uri= `mongodb+srv://${user}:${pass}@cluster0.okztc.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 const { MongoClient } = require('mongodb');
@@ -72,6 +72,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 app.get('/',(req,res)=>{
     res.send('working')
 })
-app.listen(port,()=>{
-   console.log( `your server run port is ${port}`)
-})
+// app.listen(port,()=>{
+//    console.log( `your server run port is ${port}`)
+// })
+app.listen(process.env.PORT ||port)
